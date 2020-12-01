@@ -11,12 +11,12 @@ assignees: ''
 - [ ] 
 
 ## Acceptance Criteria
-<-- Expected end result -->
+<!-- Expected end result -->
 
 ## Dependencies
-<-- Issue(s) that this issue is dependent on -->
+<!-- Issue(s) that this issue is dependent on -->
 
 ## Resources
-<-- Helpful resources to reference -->
+<!-- Helpful resources to reference -->
 
 ## Notes
