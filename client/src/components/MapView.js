@@ -5,7 +5,7 @@ import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-import Routing from "./RoutingMachine";
+import Routing from "../RoutingMachine";
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
