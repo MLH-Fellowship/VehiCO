@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import 'leaflet/dist/leaflet.css';
-import MapView from './maps.js';
+import MapView from './maps';
 
 function App() {
   return (
