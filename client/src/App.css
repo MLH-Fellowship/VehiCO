@@ -27,11 +27,22 @@
 .App-link {
   color: #61dafb;
 }
-
+.main_map {
+  height: 20px;
+}
 .leaflet-container {
-  width: 70%;
-  height: 100vh;
-  float: right;
+  width: 50%;
+  height: 90vh;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: darkblue;
+  float: left;
+}
+.leaflet-control-container .leaflet-routing-container-hide {
+  display: none;
 }
 
 @keyframes App-logo-spin {

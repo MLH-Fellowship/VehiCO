@@ -5,7 +5,7 @@ import MapView from '../components/MapView';
 function Main() {
     return (
         <div>
-            <MapView />
+        <MapView/>
         </div>
     )
 }
