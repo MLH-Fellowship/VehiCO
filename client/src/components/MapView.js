@@ -63,12 +63,12 @@ export default class MapView extends Component {
           <Marker position={center_position}>
           <Popup>
               <span>
-                A pretty CSS3 popup. <br/> Easily customizable.
+                You are here.
               </span>
           </Popup>
           </Marker>
           
-          {this.state.isMapInit && <Routing props={{map: this.map, origin:{origin}, dest:{dest}}}/>}
+          {this.state.isMapInit && <Routing map={this.map} origin ={origin} dest={dest}/>}
         </Map>
         </div>
         );

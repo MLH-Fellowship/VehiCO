@@ -5,10 +5,11 @@ import "lrm-graphhopper";
 import { withLeaflet } from "react-leaflet";
 
 class Routing extends MapLayer {
-  createLeafletElement(props) {
-    const { map } = props.props;
-    const { origin } = props.props.origin;
-    const { dest } = props.props.dest;
+  createLeafletElement() {
+    const { map } = this.props;
+    console.log(this.props);
+    const origin = this.props.origin;
+    const dest = this.props.dest;
     let leafletElement = L.Routing.control({
       waypoints: [L.latLng(origin[0],origin[1]), 
         L.latLng(dest[0],dest[1])],
