@@ -13,8 +13,7 @@ class Routing extends MapLayer {
       fitSelectedRoutes: true,
       useZoomParameter: true,
       draggableWaypoints: false,
-      // geocoder: L.Control.geocoder(),
-      router: L.Routing.graphHopper(process.env.REACT_APP_GRAPHHOPPER_API_KEY,{
+      router: L.Routing.graphHopper(process.env.REACT_APP_GRAPHHOPPER_API_KEY, {
         urlParameters:{
           vehicle:'hike'
         }
