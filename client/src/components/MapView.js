@@ -47,12 +47,12 @@ export default class MapView extends Component {
             <Tab icon={<FlightIcon style={{ color: 'white' }}/>} aria-label="flight"/>
           </Tabs>
           <Map
-          center = {center_position}
-          zoom={this.state.zoom}
-          ref={this.saveMap}>
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            center = {center_position}
+            zoom={this.state.zoom}
+            ref={this.saveMap}>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <Marker position={center_position}>
           <Popup>
@@ -62,7 +62,6 @@ export default class MapView extends Component {
           </Popup>
           </Marker>
           {this.state.isMapInit && <Routing map={this.map}/>}
-          
         </Map>
         </div>
         );
