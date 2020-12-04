@@ -1,13 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./api_docs.json');
+
 var bodyParser = require('body-parser')
 var request = require('request-promise');
-
 require('dotenv').config();
 
 app.use(cors(),
-        bodyParser.json());
+        bodyParser.json())
+app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocument));
 
 app.get("/api", async (req, res) => {
     let origin = req.query.origin;
