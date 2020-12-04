@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "defaultTitle",
-    "description": "defaultDescription",
+    "title": "VehiCO-api",
+    "description": "Api docs for VehiCO",
     "version": "0.1"
   },
   "servers": [
@@ -51,7 +51,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Endpoint to return carbon footprint based on distance and travel mod",
+            "description": "carbon footprint, distance in miles, time in mins",
             "content": {
               "application/json; charset=utf-8": {
                 "schema": {

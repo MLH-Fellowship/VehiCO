@@ -24,7 +24,7 @@ app.get("/api", async (req, res) => {
     await request(route_url,function(err,res,body){
         let route_info = JSON.parse(res.body).features[0].properties;
         distance = route_info.distance/1000*0.621371; //dist in miles
-        time = route_info.time/60; //time in hrs
+        time = route_info.time/60; //time in mins
     })
     let cf_url = "https://api.triptocarbon.xyz/v1/footprint?activity="+distance+"&activityType=miles&country=def&mode="+"taxi";
     await request(cf_url,function(err,res,body){
