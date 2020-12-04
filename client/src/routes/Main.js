@@ -4,9 +4,11 @@ import MapView from '../components/MapView';
 
 const Main = (props) => {
     console.log(props.location.state);
+    
     return (
+        
         <div>
-            <MapView />
+            <MapView loc_data = {props.location.state}/>
         </div>
     )
 }

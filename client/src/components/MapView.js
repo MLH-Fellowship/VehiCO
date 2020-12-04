@@ -23,20 +23,26 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 export default class MapView extends Component {
       state = {
-        lat: 22.5259,
-        lng: 88.3702,
+        lat: this.props.loc_data.origin.lat,
+        lng: this.props.loc_data.origin.lon,
         zoom: 13,
         maxZoom: 30,
         isMapInit: false
       };
       saveMap = map =>{
         this.map = map;
+        this.origin_lat = this.props.loc_data.origin.lat;
+        this.origin_lon = this.props.loc_data.origin.lon;
+        this.dest_lat = this.props.loc_data.dest.lat;
+        this.dest_lon = this.props.loc_data.dest.lon;
         this.setState({
           isMapInit: true
         });
       };
       render(){
         const center_position = [this.state.lat,this.state.lng];
+        const origin = [this.origin_lat,this.origin_lon];
+        const dest = [this.dest_lat,this.dest_lon];
         return (
           <div>
           <Tabs style={{backgroundColor: "darkblue",marginLeft:"100px",width:"50.5%",height:"30px",marginTop:"10px",borderRadius:"10px"}}>
@@ -61,7 +67,8 @@ export default class MapView extends Component {
               </span>
           </Popup>
           </Marker>
-          {this.state.isMapInit && <Routing map={this.map}/>}
+          
+          {this.state.isMapInit && <Routing props={{map: this.map, origin:{origin}, dest:{dest}}}/>}
         </Map>
         </div>
         );
