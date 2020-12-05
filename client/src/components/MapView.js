@@ -23,24 +23,30 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 export default class MapView extends Component {
       state = {
-        lat: 22.5259,
-        lng: 88.3702,
+        lat: this.props.loc_data.origin.lat,
+        lng: this.props.loc_data.origin.lon,
         zoom: 13,
         maxZoom: 30,
         isMapInit: false
       };
       saveMap = map =>{
         this.map = map;
+        this.origin_lat = this.props.loc_data.origin.lat;
+        this.origin_lon = this.props.loc_data.origin.lon;
+        this.dest_lat = this.props.loc_data.dest.lat;
+        this.dest_lon = this.props.loc_data.dest.lon;
         this.setState({
           isMapInit: true
         });
       };
       render(){
         const center_position = [this.state.lat,this.state.lng];
+        const origin = [this.origin_lat,this.origin_lon];
+        const dest = [this.dest_lat,this.dest_lon];
         return (
           <div>
-          <Tabs style={{backgroundColor: "darkblue",marginLeft:"100px",width:"50.5%",height:"30px",marginTop:"10px",borderRadius:"10px"}}>
-            <Tab icon={<DirectionsWalkIcon style={{ color: 'white'}}/>} aria-label="walk"/>
+          <Tabs style={{backgroundColor: "#04034E",marginLeft:"100px",width:"40.5vw",height:"5vw",marginTop:"30px",borderRadius:"10px"}}>
+            <Tab icon={<DirectionsWalkIcon style={{ color: 'white', height: '5vw'}}/>} aria-label="walk"/>
             <Tab icon={<DirectionsBikeIcon style={{ color: 'white' }}/>} aria-label="bike"/>
             <Tab icon={<DirectionsBusIcon style={{ color: 'white' }}/>} aria-label="bus"/>
             <Tab icon={<LocalTaxiIcon style={{ color: 'white' }}/>} aria-label="car"/>
@@ -57,11 +63,11 @@ export default class MapView extends Component {
           <Marker position={center_position}>
           <Popup>
               <span>
-                A pretty CSS3 popup. <br/> Easily customizable.
+                You are here.
               </span>
           </Popup>
           </Marker>
-          {this.state.isMapInit && <Routing map={this.map}/>}
+          {this.state.isMapInit && <Routing map={this.map} origin ={origin} dest={dest}/>}
         </Map>
         </div>
         );
