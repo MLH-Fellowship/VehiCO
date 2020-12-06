@@ -11,8 +11,8 @@ class Routing extends MapLayer {
     const origin = this.props.origin;
     const dest = this.props.dest;
     let leafletElement = L.Routing.control({
-      waypoints: [L.latLng(origin[0],origin[1]), 
-        L.latLng(dest[0],dest[1])],
+      waypoints: [L.latLng(origin.lat,origin.lon), 
+        L.latLng(dest.lat,dest.lon)],
       fitSelectedRoutes: true,
       useZoomParameter: true,
       draggableWaypoints: false,

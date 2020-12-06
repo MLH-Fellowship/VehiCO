@@ -34,11 +34,9 @@ export default class MapView extends Component {
         });
       };
       render(){
-        const origin_obj = this.props.loc_data.origin;
-        const dest_obj = this.props.loc_data.dest;
-        const center_position = [origin_obj.lat,origin_obj.lon];
-        const origin = center_position;
-        const dest = [dest_obj.lat,dest_obj.lon];
+        const origin = this.props.loc_data.origin;
+        const dest = this.props.loc_data.dest;
+        const center_position = [origin.lat,origin.lon];
         return (
           <div>
           <Tabs style={{backgroundColor: "darkblue",marginLeft:"100px",width:"50.5%",height:"30px",marginTop:"10px",borderRadius:"10px"}}>
