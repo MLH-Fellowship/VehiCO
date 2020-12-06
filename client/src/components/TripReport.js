@@ -193,6 +193,7 @@ const TripReport = (props) => {
 
     const handleClose = () => {
         setOpen(false);
+        window.open('https://act.conservation.org/site/Donation2?df_id=16164&16164.donation=form1&_ga=2.144573309.994587770.1607253585-38945187.1606845809',"_blank");
     };
 
     return (
