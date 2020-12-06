@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "VehiCO-api",
+    "description": "Api docs for VehiCO",
+    "version": "0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/api": {
+      "get": {
+        "description": "Endpoint to return carbon footprint based on distance and travel mode",
+        "parameters": [
+          {
+            "name": "mode",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "drive"
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "17.4454957,78.34854697544472"
+          },
+          {
+            "name": "dest",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "22.4979765,88.3059193"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "carbon footprint, distance in miles, time in mins",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "http://localhost:5000"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "http://localhost:5000"
+        }
+      ]
+    }
+  }
+}

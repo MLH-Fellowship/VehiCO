@@ -26,14 +26,13 @@ const Main = (props) => {
         <div className={classes.root}>
             <Grid container justify="center" direction="row" alignItems="center" spacing={0} className={classes.grid}>
             <Grid item xs={7}>
-                    <MapView />
+                    <MapView loc_data = {props.location.state}/>
                 </Grid>
                 <Grid item xs={4}>
                     <h1 className={classes.logo}>VehiCO</h1>
                     <TripReport />
                 </Grid>
             </Grid>
-        </div>
     )
 }
 
