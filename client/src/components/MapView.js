@@ -23,8 +23,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 export default class MapView extends Component {
       state = {
-        lat: 22.5259,
-        lng: 88.3702,
         zoom: 13,
         maxZoom: 30,
         isMapInit: false
@@ -36,7 +34,8 @@ export default class MapView extends Component {
         });
       };
       render(){
-        const center_position = [this.state.lat,this.state.lng];
+        const {origin,dest} = this.props.loc_data;
+        const center_position = [origin.lat,origin.lon];
         return (
           <div>
           <Tabs style={{backgroundColor: "darkblue",marginLeft:"100px",width:"50.5%",height:"30px",marginTop:"10px",borderRadius:"10px"}}>
@@ -57,11 +56,12 @@ export default class MapView extends Component {
           <Marker position={center_position}>
           <Popup>
               <span>
-                A pretty CSS3 popup. <br/> Easily customizable.
+                You are here.
               </span>
           </Popup>
           </Marker>
-          {this.state.isMapInit && <Routing map={this.map}/>}
+          
+          {this.state.isMapInit && <Routing map={this.map} origin ={origin} dest={dest}/>}
         </Map>
         </div>
         );
