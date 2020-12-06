@@ -34,8 +34,7 @@ export default class MapView extends Component {
         });
       };
       render(){
-        const origin = this.props.loc_data.origin;
-        const dest = this.props.loc_data.dest;
+        const {origin,dest} = this.props.loc_data;
         const center_position = [origin.lat,origin.lon];
         return (
           <div>
