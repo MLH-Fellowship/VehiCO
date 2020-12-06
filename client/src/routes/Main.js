@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import MapView from '../components/MapView';
 import TripReport from '../components/TripReport';
+import swal from 'sweetalert';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
@@ -62,7 +63,7 @@ const Main = (props) => {
                     setIsLoading(false);
                 }
                 else {
-                    alert(data.message)
+                    swal("Invalid trip",data.message,"error");
                 }
             })
             .catch(err => console.log(err));

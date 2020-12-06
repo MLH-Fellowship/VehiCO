@@ -2,6 +2,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { HorizontalBar } from 'react-chartjs-2';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import NffLogo from '../assets/nff_logo.png';
 import 'chartjs-plugin-datalabels';
 
 const useStyles = makeStyles({
@@ -53,6 +61,56 @@ const useStyles = makeStyles({
             transition: "transform 0.3s ease-out",
             transform: "scale(0.97)"
         },
+    },
+    paper: {
+        borderRadius: "1vw",
+        width: "600px",
+        height: "400px",
+        padding: "0.5vw"
+    },
+    donateButton: {
+        padding: "0.8vw 1.5vw 0.8vw 1.5vw",
+        margin: "1vw 11vw 7vw 2.5vw",
+        fontSize: "1.5vw",
+        borderRadius: "1vw",
+        position: "fixed",
+        border: "none",
+        outline: "none",
+        color: "white",
+        background: "#84C58B",
+        '&:hover': {
+            cursor: "pointer",
+            transition: "transform 0.3s ease-out",
+            transform: "scale(0.97)"
+        },
+    },
+    modalTitle: {
+        textAlign: "center"
+    },
+    co2report: {
+        float: "left",
+        marginLeft: "2vw",
+        width: "10vw",
+        height: "10vw",
+        textAlign: "center"
+    },
+    offreport: {
+        float: "right",
+        marginRight: "3vw",
+        width: "10vw",
+        height: "10vw",
+        textAlign: "center"
+    },
+    logo: {
+        height: "3.5vw",
+        width: "10vw"
+    },
+    arrowStyle: {
+        marginTop: "4vw",
+        marginLeft: "1vw",
+        marginRight: "1vw",
+        transform: "scale(2)",
+        color: "grey"
     },
     callToAction: {
         fontSize: "1vw",
@@ -125,12 +183,24 @@ const TripReport = (props) => {
             }
         ]
     };
+    const [open, setOpen] = React.useState(false);
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <div className={classes.root}>
             <h1 className={classes.title}>Your Trip Report</h1>
             <hr className={classes.line} />
             { !isLoading && tripData ? 
+                <div>
                 <div>
                     <div className={classes.statsContainer}>
                         <h3 className={classes.stats}>Distance: <span style={{color:"#04034E"}}> { tripData.distance.toFixed(2) } </span> miles </h3>
@@ -140,12 +210,34 @@ const TripReport = (props) => {
                     <button className={classes.directionBtn} onClick={redirectToMap}> Get Directions </button>
                     <HorizontalBar data={data} options={options} height={90} />
                     <p className={classes.callToAction}>Help save the planet by choosing eco-friendly transport modes or offsetting your carbon footprint</p>
-                    <button className={classes.offsetBtn} > Offset </button>
+                    <button className={classes.offsetBtn} onClick={handleClickOpen}> Offset </button>
                 </div> 
+                <Dialog
+                fullScreen={fullScreen}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="responsive-dialog-title"
+                classes={{ paper: classes.paper}}>
+                <DialogTitle className={classes.modalTitle} id="responsive-dialog-title">{"Neutralize your trip by donating to plant 🌳"}</DialogTitle>
+                <DialogContent>
+                  <ArrowForwardIcon className={classes.arrowStyle}/>
+                  <div className={classes.co2report}><h2>CO2 Emission</h2> <h1 style={{color:"#84C58B"}}> { tripData.cf.toFixed(4) } </h1> <h2>tons</h2></div>
+                  <div className={classes.offreport}><h2>Offset Donation</h2> <h1 style={{color:"#84C58B"}}> { "$"+(tripData.cf*12).toFixed(2) } </h1>
+                   <img src={NffLogo} alt="NFF Logo" className={classes.logo}/>
+                  </div>
+                </DialogContent>
+                <DialogActions>
+                  <button className={classes.donateButton} onClick={handleClose}>
+                    Donate
+                  </button>
+                </DialogActions>
+              </Dialog>
+              </div>
                 : <CircularProgress color="secondary"/>
             }
             
         </div>
+        
     )
 }
 
