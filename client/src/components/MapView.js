@@ -23,26 +23,22 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 export default class MapView extends Component {
       state = {
-        lat: this.props.loc_data.origin.lat,
-        lng: this.props.loc_data.origin.lon,
         zoom: 13,
         maxZoom: 30,
         isMapInit: false
       };
       saveMap = map =>{
         this.map = map;
-        this.origin_lat = this.props.loc_data.origin.lat;
-        this.origin_lon = this.props.loc_data.origin.lon;
-        this.dest_lat = this.props.loc_data.dest.lat;
-        this.dest_lon = this.props.loc_data.dest.lon;
         this.setState({
           isMapInit: true
         });
       };
       render(){
-        const center_position = [this.state.lat,this.state.lng];
-        const origin = [this.origin_lat,this.origin_lon];
-        const dest = [this.dest_lat,this.dest_lon];
+        const origin_obj = this.props.loc_data.origin;
+        const dest_obj = this.props.loc_data.dest;
+        const center_position = [origin_obj.lat,origin_obj.lon];
+        const origin = center_position;
+        const dest = [dest_obj.lat,dest_obj.lon];
         return (
           <div>
           <Tabs style={{backgroundColor: "darkblue",marginLeft:"100px",width:"50.5%",height:"30px",marginTop:"10px",borderRadius:"10px"}}>
