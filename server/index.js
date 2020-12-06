@@ -8,17 +8,18 @@ var bodyParser = require('body-parser')
 var request = require('request-promise');
 require('dotenv').config();
 
+const KG_PER_TON = 907;
+const SEC_PER_MIN = 60;
+const METER_PER_MILE = 1609;
+
 app.use(cors(),
         bodyParser.json())
 app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocument));
 
 app.get("/api", async (req, res) => {
-    let origin = req.query.origin;
-    let dest = req.query.dest;
-    let mode = req.query.mode;
-    var mode_map = new Map([["walk","walk"],["drive","petrolCar"],["bicycle","motorbike"],["transit","bus"]]);
-    var trip_mode = mode_map.get(mode);
-    // console.log(trip_mode);
+    const { origin, dest, mode } = req.query;
+    const mode_map = new Map([["walk","walk"],["drive","petrolCar"],["bicycle","bicycle"],["transit","bus"]]);
+    const trip_mode = mode_map.get(mode);
     let geoapify_token = process.env.GEOAPIFY_API_KEY;
     let distance = 0;
     let time = 0;
@@ -28,34 +29,32 @@ app.get("/api", async (req, res) => {
         method: "GET",
         uri: route_url
     }
-    console.log(route_url);
-    await request(geoopt).then(function(res){
-        // console.log(res);
-        // console.log("statuscode:",res.statusCode);
-        // console.log(res);
-        let route_info = JSON.parse(res).features[0].properties;
-        distance = route_info.distance/1000*0.621371; //dist in miles
-        time = route_info.time/60; //time in mins
+    await request(geoopt).then(function(result){
+        let route_info = JSON.parse(result).features[0].properties;
+        distance = route_info.distance/ METER_PER_MILE; //dist in miles
+        time = route_info.time / SEC_PER_MIN; //time in mins
+    })
+    .catch(function(err){
+        return res.status(400).json(JSON.parse(err.error));
+    });
+
+    // Fetch TripToCarbon API if mode is not walk or bicycle
+    if (trip_mode !== "walk" && trip_mode !== "bicycle" && distance !== 0) {
+        let cf_url = "https://api.triptocarbon.xyz/v1/footprint?activity="+distance+"&activityType=miles&country=def&mode="+trip_mode;
+        const ttopt = {
+            method: "GET",
+            uri: cf_url
+        }
+        await request(ttopt).then(function(result){
+            cf_val = JSON.parse(result).carbonFootprint / KG_PER_TON;
         })
         .catch(function(err){
-            console.log(err);
+            return res.status(400).json(JSON.parse(err.error));
         });
-        if (distance!=0){
-            let cf_url = "https://api.triptocarbon.xyz/v1/footprint?activity="+distance+"&activityType=miles&country=def&mode="+trip_mode;
-            const ttopt = {
-                method: "GET",
-                uri: cf_url
-            }
-            await request(ttopt).then(function(res){
-                // console.log(res)
-                cf_val = JSON.parse(res).carbonFootprint;
-            })
-            .catch(function(err){
-                console.log(err);
-            })
-        }
-    res.json({"cf": cf_val,"distance":distance,"time":time});
-    });
+    }
+
+    res.status(200).json({"statusCode": 200, "cf": cf_val, "distance": distance, "time": time});
+});
 
 const port = process.env.port || 5000;
 const server = app.listen(port, () => {

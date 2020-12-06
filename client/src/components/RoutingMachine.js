@@ -6,10 +6,9 @@ import { withLeaflet } from "react-leaflet";
 
 class Routing extends MapLayer {
   createLeafletElement() {
-    const { map } = this.props;
-    console.log(this.props);
-    const origin = this.props.origin;
-    const dest = this.props.dest;
+    const { map, origin, dest, mode } = this.props;
+    const modeMap = new Map([["walk","hike"],["drive","car"],["bicycle","bike"],["transit","truck"]]);
+
     let leafletElement = L.Routing.control({
       waypoints: [L.latLng(origin.lat,origin.lon), 
         L.latLng(dest.lat,dest.lon)],
@@ -19,11 +18,13 @@ class Routing extends MapLayer {
       routeWhileDragging: false,
       router: L.Routing.graphHopper(process.env.REACT_APP_GRAPHHOPPER_API_KEY, {
         urlParameters:{
-          vehicle:'hike'
+          vehicle: modeMap.get(mode)
         }
       })
     }).addTo(map.leafletElement);
+
     leafletElement.hide();
+
     return leafletElement.getPlan();
   }
 }
