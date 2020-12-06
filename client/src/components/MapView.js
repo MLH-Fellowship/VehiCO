@@ -1,16 +1,10 @@
 import React from 'react'; 
-import { withStyles } from '@material-ui/styles';
 import {Map,TileLayer,Marker,Popup} from 'react-leaflet';
 import L from 'leaflet';
 
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
-import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
-import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
+
 
 
 import Routing from "./RoutingMachine";
@@ -22,31 +16,13 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
-const styles = () => ({
-  tabContainer: {
-    backgroundColor: "#04034E",
-    borderStyle: "solid",
-    borderWidth: "3px",
-    borderBottom: "0px",
-    borderColor: "#04034E",
-    borderTopLeftRadius: "20px",
-    borderTopRightRadius: "20px",
-    width:"90%",
-    marginTop:"10px",
-  },
-  tab: {
-    color: "white"
-  },
-});
-
 class MapView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       zoom: 13,
       maxZoom: 30,
-      isMapInit: false,
-      tabValue: 0
+      isMapInit: false
     }
   }
 
@@ -57,25 +33,11 @@ class MapView extends React.Component {
     });
   };
 
-  handleTabChange = (event, newValue) => {
-    this.setState({
-      tabValue: newValue
-    })
-  }
-
   render(){
-    const { classes } = this.props;
-    const { tabValue } = this.state;
-    const { origin, dest } = this.props.loc_data;
+    const { origin, dest } = this.props;
     const center = [origin.lat,origin.lon];
     return (
       <div>
-        <Tabs centered variant="fullWidth" onChange={this.handleTabChange} className={ classes.tabContainer } indicatorColor="secondary" value={tabValue}>
-          <Tab className={ classes.tab } icon={ <DirectionsWalkIcon /> } aria-label="walk"/>
-          <Tab className={ classes.tab } icon={ <DirectionsBikeIcon /> } aria-label="bike"/>
-          <Tab className={ classes.tab } icon={ <DirectionsBusIcon /> } aria-label="bus"/>
-          <Tab className={ classes.tab } icon={ <DirectionsCarIcon /> } aria-label="car"/>
-        </Tabs>
         <Map
           center = {center}
           zoom={this.state.zoom}
@@ -91,11 +53,11 @@ class MapView extends React.Component {
             </span>
         </Popup>
         </Marker>
-        {this.state.isMapInit && <Routing map={this.map} origin ={origin} dest={dest}/>}
+        {this.state.isMapInit && <Routing map={this.map} origin={origin} dest={dest}/>}
       </Map>
     </div>
     );
   };
 };
    
-export default withStyles(styles)(MapView);
+export default MapView;

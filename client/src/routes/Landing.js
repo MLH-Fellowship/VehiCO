@@ -91,7 +91,6 @@ const Landing = (props) => {
   const debouncedOriginQuery = useDebounce(originQuery, 500);
   const debouncedDestQuery = useDebounce(destQuery, 500);
 
-
   function handleSubmit() {
     if (origin && dest) {
         let result = {

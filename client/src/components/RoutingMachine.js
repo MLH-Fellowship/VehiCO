@@ -6,10 +6,8 @@ import { withLeaflet } from "react-leaflet";
 
 class Routing extends MapLayer {
   createLeafletElement() {
-    const { map } = this.props;
-    console.log(this.props);
-    const origin = this.props.origin;
-    const dest = this.props.dest;
+    const { map, origin, dest } = this.props;
+
     let leafletElement = L.Routing.control({
       waypoints: [L.latLng(origin.lat,origin.lon), 
         L.latLng(dest.lat,dest.lon)],
@@ -23,7 +21,9 @@ class Routing extends MapLayer {
         }
       })
     }).addTo(map.leafletElement);
+
     leafletElement.hide();
+    
     return leafletElement.getPlan();
   }
 }
