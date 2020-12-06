@@ -17,11 +17,14 @@ const useStyles = makeStyles({
         marginBottom: '2vh',
         marginTop: '0.5vh'
     },
+    grid: {
+        height: "100vh"
+    }
 });
 
 const Main = (props) => {
     const classes = useStyles();
-    console.log(props.location.state);
+    // const { origin, dest } = props.location.state;
     return (
         <div className={classes.root}>
             <Grid container justify="center" direction="row" alignItems="center" spacing={0} className={classes.grid}>
@@ -33,6 +36,7 @@ const Main = (props) => {
                     <TripReport />
                 </Grid>
             </Grid>
+        </div>
     )
 }
 

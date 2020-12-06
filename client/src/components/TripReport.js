@@ -6,7 +6,6 @@ import 'chartjs-plugin-datalabels';
 const useStyles = makeStyles({
     root: {
         width: "30vw",
-        height: "75vh",
         background: "white",
         borderRadius: "20px"
     },
@@ -41,6 +40,7 @@ const useStyles = makeStyles({
     },
     offsetBtn: {
         padding: "0.8vw 1.5vw 0.8vw 1.5vw",
+        marginBottom: "1vw",
         fontSize: "1.5vw",
         borderRadius: "1vw",
         border: "none",
