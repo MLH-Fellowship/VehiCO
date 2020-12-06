@@ -23,7 +23,7 @@ class Routing extends MapLayer {
     }).addTo(map.leafletElement);
 
     leafletElement.hide();
-    
+
     return leafletElement.getPlan();
   }
 }
