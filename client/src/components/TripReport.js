@@ -70,7 +70,7 @@ const useStyles = makeStyles({
     },
     donateButton: {
         padding: "0.8vw 1.5vw 0.8vw 1.5vw",
-        margin: "1vw 11vw 7vw 2.5vw",
+        margin: "1vw 13vw 7vw 2.5vw",
         fontSize: "1.5vw",
         borderRadius: "1vw",
         position: "fixed",
@@ -107,7 +107,7 @@ const useStyles = makeStyles({
     },
     arrowStyle: {
         marginTop: "4vw",
-        marginLeft: "1vw",
+        marginLeft: "3vw",
         marginRight: "1vw",
         transform: "scale(2)",
         color: "grey"
@@ -193,8 +193,10 @@ const TripReport = (props) => {
 
     const handleClose = () => {
         setOpen(false);
-        window.open('https://act.conservation.org/site/Donation2?df_id=16164&16164.donation=form1&_ga=2.144573309.994587770.1607253585-38945187.1606845809',"_blank");
     };
+    const handleRedirect = () => {
+        window.open('https://act.conservation.org/site/Donation2?df_id=16164&16164.donation=form1&_ga=2.144573309.994587770.1607253585-38945187.1606845809',"_blank");
+    }
 
     return (
         <div className={classes.root}>
@@ -228,7 +230,7 @@ const TripReport = (props) => {
                   </div>
                 </DialogContent>
                 <DialogActions>
-                  <button className={classes.donateButton} onClick={handleClose}>
+                  <button className={classes.donateButton} onClick={handleRedirect}>
                     Donate
                   </button>
                 </DialogActions>
