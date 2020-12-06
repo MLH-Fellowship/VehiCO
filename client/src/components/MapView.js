@@ -33,8 +33,8 @@ class MapView extends React.Component {
     });
   };
 
-  render(){
-    const { origin, dest } = this.props;
+  render() {
+    const { origin, dest, mode } = this.props;
     const center = [origin.lat,origin.lon];
     return (
       <div>
@@ -53,7 +53,7 @@ class MapView extends React.Component {
             </span>
         </Popup>
         </Marker>
-        {this.state.isMapInit && <Routing map={this.map} origin={origin} dest={dest}/>}
+        {this.state.isMapInit && <Routing map={this.map} origin={origin} dest={dest} mode={mode}/>}
       </Map>
     </div>
     );

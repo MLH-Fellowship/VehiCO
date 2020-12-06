@@ -29,13 +29,13 @@ app.get("/api", async (req, res) => {
         method: "GET",
         uri: route_url
     }
-    await request(geoopt).then(function(res){
-        let route_info = JSON.parse(res).features[0].properties;
+    await request(geoopt).then(function(result){
+        let route_info = JSON.parse(result).features[0].properties;
         distance = route_info.distance/ METER_PER_MILE; //dist in miles
         time = route_info.time / SEC_PER_MIN; //time in mins
     })
     .catch(function(err){
-        console.log(err);
+        return res.status(400).json(JSON.parse(err.error));
     });
 
     // Fetch TripToCarbon API if mode is not walk or bicycle
@@ -45,14 +45,15 @@ app.get("/api", async (req, res) => {
             method: "GET",
             uri: cf_url
         }
-        await request(ttopt).then(function(res){
-            cf_val = JSON.parse(res).carbonFootprint / KG_PER_TON;
+        await request(ttopt).then(function(result){
+            cf_val = JSON.parse(result).carbonFootprint / KG_PER_TON;
         })
         .catch(function(err){
-            console.log(err);
-        })
+            return res.status(400).json(JSON.parse(err.error));
+        });
     }
-    res.json({"cf": cf_val,"distance":distance,"time":time});
+
+    res.status(200).json({"statusCode": 200, "cf": cf_val, "distance": distance, "time": time});
 });
 
 const port = process.env.port || 5000;

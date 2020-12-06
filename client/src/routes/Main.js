@@ -57,9 +57,15 @@ const Main = (props) => {
         fetch(`http://localhost:5000/api?mode=${mode}&origin=${origin.lat},${origin.lon}&dest=${dest.lat},${dest.lon}`)
             .then(res => res.json())
             .then(data => {
-                setData(data);
-                setIsLoading(false);
-            });
+                if (data.statusCode === 200) {
+                    setData(data);
+                    setIsLoading(false);
+                }
+                else {
+                    alert(data.message)
+                }
+            })
+            .catch(err => console.log(err));
     }, [mode, origin, dest])
 
     const handleTabChange = (event, newValue) => {
@@ -83,7 +89,7 @@ const Main = (props) => {
                         <Tab className={ classes.tab } icon={ <DirectionsBusIcon /> } aria-label="bus"/>
                         <Tab className={ classes.tab } icon={ <DirectionsCarIcon /> } aria-label="car"/>
                     </Tabs>
-                    <MapView origin={origin} dest={dest} />
+                    <MapView origin={origin} dest={dest} mode={mode}/>
                 </Grid>
                 <Grid item xs={4}>
                     <h1 className={classes.logo}>VehiCO</h1>
