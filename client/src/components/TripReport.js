@@ -56,56 +56,6 @@ const useStyles = makeStyles({
             transform: "scale(0.97)"
         },
     },
-    paper: {
-        borderRadius: "1vw",
-        width: "600px",
-        height: "400px",
-        padding: "0.5vw"
-    },
-    donateButton: {
-        padding: "0.8vw 1.5vw 0.8vw 1.5vw",
-        margin: "1vw 13vw 7vw 2.5vw",
-        fontSize: "1.5vw",
-        borderRadius: "1vw",
-        position: "fixed",
-        border: "none",
-        outline: "none",
-        color: "white",
-        background: "#84C58B",
-        '&:hover': {
-            cursor: "pointer",
-            transition: "transform 0.3s ease-out",
-            transform: "scale(0.97)"
-        },
-    },
-    modalTitle: {
-        textAlign: "center"
-    },
-    co2report: {
-        float: "left",
-        marginLeft: "1vw",
-        width: "10vw",
-        height: "10vw",
-        textAlign: "center"
-    },
-    offreport: {
-        float: "right",
-        marginRight: "1vw",
-        width: "10vw",
-        height: "10vw",
-        textAlign: "center"
-    },
-    logo: {
-        height: "3.5vw",
-        width: "10vw"
-    },
-    arrowStyle: {
-        marginTop: "4vw",
-        marginLeft: "2vw",
-        marginRight: "1vw",
-        transform: "scale(2)",
-        color: "grey"
-    },
     callToAction: {
         fontSize: "1vw",
         fontWeight: "normal",

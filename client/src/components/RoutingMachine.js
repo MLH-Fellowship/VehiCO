@@ -28,7 +28,6 @@ class Routing extends MapLayer {
       });
       leafletElement.addTo(map.leafletElement);
       leafletElement.hide();
-      // this.leafletElement = leafletElement;
       leafletElement.route();
       leafletElement.getPlan().setWaypoints([]);
       return leafletElement.getPlan();
@@ -54,7 +53,6 @@ class Routing extends MapLayer {
     });
     leafletElement.addTo(map.leafletElement);
     leafletElement.hide();
-    // this.leafletElement = leafletElement;
     leafletElement.route();
     return leafletElement.getPlan();
   }
