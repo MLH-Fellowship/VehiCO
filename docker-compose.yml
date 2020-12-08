@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+#############################
+#   Setup node container
+#############################
+  server:
+    container_name: VehiCO-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes: 
+      - ./server:/srv/app/VehiCO-server
+
+  #############################
+  #   Setup client container
+  #############################
+
+  client:
+    container_name: VehiCO-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes: 
+      - ./client/src:/srv/app/VehiCO-client/src
+      - ./client/public:/srv/app/VehiCO-client/public
+    links:
+      - server
