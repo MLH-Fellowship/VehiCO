@@ -1,14 +1,14 @@
-FROM node:8.7.0-alpine
+FROM node:13.12.0-alpine
 
 RUN mkdir -p /srv/app/VehiCO-client
+WORKDIR /srv/app/VehiCO-client
 
 COPY package.json /srv/app/VehiCO-client
 COPY package-lock.json /srv/app/VehiCO-client
 
-RUN npm install
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
-
-WORKDIR /srv/app/VehiCO-client
 COPY . /srv/app/VehiCO-client
 
 EXPOSE 3000 
