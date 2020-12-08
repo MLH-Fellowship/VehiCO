@@ -28,6 +28,11 @@ In addition to helping you make more informed decisions of your choice of transp
 
 ![image.png](https://i.postimg.cc/Pqf98Cjh/image.png)
 
+### Try out the API:
+
+With the server running (instructions below), navigate to `http://localhost:5000/api-docs/` to test out the Swagger docs for the API.
+
+<img src="https://i.postimg.cc/y8HXsMm5/vehico-api.png" width="100%">
 
 ## 🚀 Technology Stack:
 - **Frontend**: <img src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/> <img src="https://img.shields.io/badge/material%20ui%20-%230081CB.svg?&style=for-the-badge&logo=material-ui&logoColor=white"/>
@@ -37,12 +42,29 @@ In addition to helping you make more informed decisions of your choice of transp
 
 ## 👉 Getting Started
 
+### Installation: 
+
 - Fork and clone the repo
 
 ```
 $ git clone https://github.com/MLH-Fellowship/VehiCO.git
 $ cd VehiCO
 ```
+
+### Build and run using Docker
+
+#### Build the containers for both client and server:
+```
+$ docker-compose up --build
+```
+
+#### Run the containers for client and server:
+
+```
+$ docker-compose up -d
+```
+
+### Run using npm:
 
 #### Frontend:
 - Install dependencies
@@ -68,6 +90,9 @@ $ npm install
 ```
 $ npm start
 ```
+
+Navigate to `http://localhost:3000/` to test the application. 
+
 
 ## :heart: Contributing
 
