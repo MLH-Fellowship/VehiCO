@@ -102,7 +102,7 @@ $ docker pull ghcr.io/susiejojo/vehico:client
 
 - For server:
 ```
-$ https://github.com/users/susiejojo/packages/container/package/vehico_server
+$ docker pull ghcr.io/susiejojo/vehico_server:server
 ```
 
 ## :heart: Contributing
