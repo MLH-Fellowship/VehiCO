@@ -13,3 +13,5 @@ EXPOSE 5000
 COPY . /srv/app/VehiCO-server
 
 CMD ["npm","start"]
+
+LABEL org.opencontainers.image.source https://github.com/MLH-Fellowship/VehiCO
