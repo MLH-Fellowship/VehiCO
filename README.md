@@ -1,7 +1,7 @@
 <p align="center">
- <h1 align="center"> 🚌 VehiCO<sub>2</sub> 🚌 </h1>
+ <h1 align="center"> 🚌 VehiCO 🚌 </h1>
  <h3 align="center">Saving the environment one trip at a time 🌳</h3>
- <p align="center"> VehiCO<sub>2</sub> (pronounced Vehicle) is a webapp that aims to help users be more environmentally-conscious and make informed decisions by comparing the CO<sub>2</sub> emission of different transportation modes for their trip. We also encourage users to take actions and contribute to sustainability efforts by providing a convenient way for them to neutralize their emission by donating to plant trees.
+ <p align="center"> VehiCO (pronounced Vehicle) is a webapp that aims to help users be more environmentally-conscious and make informed decisions by comparing the CO<sub>2</sub> emission of different transportation modes for their trip. We also encourage users to take actions and contribute to sustainability efforts by providing a convenient way for them to neutralize their emission by donating to plant trees.
 </p>
 <p align="center">
  <img src="https://img.shields.io/github/issues/MLH-Fellowship/VehiCO?color=green&style=for-the-badge" align="center"/>
@@ -93,6 +93,17 @@ $ npm start
 
 Navigate to `http://localhost:3000/` to test the application. 
 
+### Pulling docker images from Github registry:
+
+- For client:
+```
+$ docker pull ghcr.io/susiejojo/vehico:client
+```
+
+- For server:
+```
+$ https://github.com/users/susiejojo/packages/container/package/vehico_server
+```
 
 ## :heart: Contributing
 
