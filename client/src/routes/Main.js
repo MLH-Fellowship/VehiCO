@@ -14,18 +14,21 @@ import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 
 const useStyles = makeStyles({
     root: {
-        marginRight: "2vw",
-        marginLeft: "2vw",
+        marginRight: "1vw",
+        marginLeft: "1vw",
     },
     logo: {
         fontSize: '4vw',
         fontWeight: "normal",
-        color: '#04034E',
         marginBottom: '2vh',
-        marginTop: '0.5vh'
+        marginTop: '0.5vh',
+    },
+    logoLink: {
+        color: '#04034E',
+        textDecoration: 'none',
     },
     grid: {
-        height: "100vh"
+        height: "100vh",
     },
     tabContainer: {
         backgroundColor: "#04034E",
@@ -40,6 +43,20 @@ const useStyles = makeStyles({
     },
     tab: {
         color: "white"
+    },
+    backButton: {
+        padding: "0 1vw 0 1vw",
+        fontSize: "3vw",
+        borderRadius: "1vw",
+        border: "none",
+        outline: "none",
+        color: "white",
+        background: "#04034E",
+        '&:hover': {
+            cursor: "pointer",
+            transition: "transform 0.3s ease-out",
+            transform: "scale(0.97)"
+        },
     },
 });
 
@@ -80,10 +97,20 @@ const Main = (props) => {
         window.open(url, "_blank");
     }
 
+    const handleBack = () => {
+        props.history.push({ 
+            pathname: '/'
+        });
+    }
+
     return (
+        
         <div className={classes.root}>
             <Grid container justify="center" direction="row" alignItems="center" spacing={0} className={classes.grid}>
-            <Grid item xs={7}>
+                <Grid item xs={1}>
+                    <button className={classes.backButton} onClick={handleBack}>{"<"}</button>
+                </Grid>
+                <Grid item xs={7}>
                     <Tabs centered variant="fullWidth" onChange={handleTabChange} className={ classes.tabContainer } indicatorColor="secondary" value={tabValue}>
                         <Tab className={ classes.tab } icon={ <DirectionsWalkIcon /> } aria-label="walk"/>
                         <Tab className={ classes.tab } icon={ <DirectionsBikeIcon /> } aria-label="bike"/>
@@ -93,7 +120,7 @@ const Main = (props) => {
                     <MapView origin={origin} dest={dest} mode={mode}/>
                 </Grid>
                 <Grid item xs={4}>
-                    <h1 className={classes.logo}>VehiCO</h1>
+                    <h1 className={classes.logo}><a href="/" className={classes.logoLink}>VehiCO</a></h1>
                     <TripReport isLoading={isLoading} tripData={data} redirectToMap={googleMapRedirect}/>
                 </Grid>
             </Grid>
