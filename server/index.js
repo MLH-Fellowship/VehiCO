@@ -59,11 +59,11 @@ app.get("/api", async (req, res) => {
 
 if (process.env.NODE_ENV.trim() === "production") {
     // Serve static files
-    app.use(express.static(path.join(__dirname, '../client/build')));
+    app.use(express.static(path.join(__dirname, '../VehiCO-client/build')));
       
     // Handle React routing, return all requests to React app
     app.get('*', function(req, res) {
-      res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+      res.sendFile(path.join(__dirname, '../VehiCO-client/build', 'index.html'));
     });
 }
 
