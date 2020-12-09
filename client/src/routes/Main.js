@@ -72,7 +72,7 @@ const Main = (props) => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`http://localhost:5000/api?mode=${mode}&origin=${origin.lat},${origin.lon}&dest=${dest.lat},${dest.lon}`)
+        fetch(`/api?mode=${mode}&origin=${origin.lat},${origin.lon}&dest=${dest.lat},${dest.lon}`)
             .then(res => res.json())
             .then(data => {
                 if (data.statusCode === 200) {

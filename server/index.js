@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
 const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./api_docs.json');
@@ -55,6 +56,16 @@ app.get("/api", async (req, res) => {
 
     res.status(200).json({"statusCode": 200, "cf": cf_val, "distance": distance, "time": time});
 });
+
+if (process.env.NODE_ENV.trim() === "production") {
+    // Serve static files
+    app.use(express.static(path.join(__dirname, '../client/build')));
+      
+    // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    });
+}
 
 const port = process.env.port || 5000;
 const server = app.listen(port, () => {
