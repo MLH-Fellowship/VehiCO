@@ -11,7 +11,6 @@ class Routing extends MapLayer {
       const { map, origin, dest, mode } = this.props;
       const modeMap = new Map([["walk","hike"],["drive","car"],["bicycle","bike"],["transit","truck"]]);
       
-      console.log(this);
       leafletElement=  L.Routing.control({
         waypoints: [L.latLng(origin.lat,origin.lon), 
           L.latLng(dest.lat,dest.lon)],
