@@ -6,23 +6,29 @@
 <p align="center">
  <img src="https://img.shields.io/github/issues/MLH-Fellowship/VehiCO?color=green&style=for-the-badge" align="center"/>
  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge" align="center"/>
+</p>
+<h3 align="center">
+ <a href="https://vehico-client.herokuapp.com/"> Try it out! </a>
+</h3>
 <hr>
 
 ## ⭐ How VehiCO Works
 
-### Input origin and destination addresses 📍
+### Usage
+
+#### Input origin and destination addresses 📍
 
 We support address autocomplete for your input!
 
 ![image.png](https://i.postimg.cc/8cvhCmX5/image.png)
 
-### View Map Route and Trip Report for different transportation modes 🚴‍
+#### View Map Route and Trip Report for different transportation modes 🚴‍
 
 You can view the distance, travel duration, and CO2 emission (in ton) based on your trip's origin and destination. To put your trip's CO2 emission into perspective, we also provided a chart comparing your trip's emission with other contexts! Once you decide on the transportation mode of your choice, you can get more detailed directions and routing by selecting Get Directions.
 
 ![Screenshot-2020-12-07-225623.jpg](https://i.postimg.cc/ncVrdkpt/Screenshot-2020-12-07-225623.jpg)
 
-### Neutralize your trip's carbon emission with an offset donation 🌲
+#### Neutralize your trip's carbon emission with an offset donation 🌲
 
 In addition to helping you make more informed decisions of your choice of transportation mode, we also provided a convenient way for you to offset your carbon emission by donating to climate change organizations to plant trees!
 
@@ -30,7 +36,7 @@ In addition to helping you make more informed decisions of your choice of transp
 
 ### Try out the API:
 
-With the server running (instructions below), navigate to `http://localhost:5000/api-docs/` to test out the Swagger docs for the API.
+With the server running (instructions below), navigate to https://vehico-server.herokuapp.com/api-docs/ to test out the Swagger docs for the API.
 
 <img src="https://i.postimg.cc/y8HXsMm5/vehico-api.png" width="100%">
 
