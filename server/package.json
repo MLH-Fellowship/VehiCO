@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "start": "SET NODE_ENV=production & nodemon index.js",
-    "heroku-postbuild": "cd ../client && npm install && npm run build"
+    "start": "set NODE_ENV=production && nodemon index.js",
+    "server": "nodemon index.js"
   },
   "author": "",
   "license": "MIT",

@@ -57,15 +57,15 @@ app.get("/api", async (req, res) => {
     res.status(200).json({"statusCode": 200, "cf": cf_val, "distance": distance, "time": time});
 });
 
-if (process.env.NODE_ENV.trim() === "production") {
-    // Serve static files
-    app.use(express.static(path.join(__dirname, '../VehiCO-client/build')));
+// if (process.env.NODE_ENV.trim() === "production") {
+//     // Serve static files
+//     app.use(express.static(path.join(__dirname, '../VehiCO-client/build')));
       
-    // Handle React routing, return all requests to React app
-    app.get('*', function(req, res) {
-      res.sendFile(path.join(__dirname, '../VehiCO-client/build', 'index.html'));
-    });
-}
+//     // Handle React routing, return all requests to React app
+//     app.get('*', function(req, res) {
+//       res.sendFile(path.join(__dirname, '../VehiCO-client/build', 'index.html'));
+//     });
+// }
 
 const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
