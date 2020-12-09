@@ -8,7 +8,7 @@ services:
   server:
     container_name: VehiCO-server
     env_file:
-      - .server/.env
+      - ./server/.env
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -24,7 +24,7 @@ services:
   client:
     container_name: VehiCO-client
     env_file:
-      - .client/.env
+      - ./client/.env
     build:
       context: ./client
       dockerfile: Dockerfile
