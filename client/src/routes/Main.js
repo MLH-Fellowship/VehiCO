@@ -71,7 +71,7 @@ const Main = (props) => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        const apiUrl = process.env.NODE_ENV === "production" ? "https://vehico-server.herokuapp.com" : "http://localhost:5000";
+        const apiUrl = process.env.NODE_ENV === "development" ? "http://localhost:5000" : "https://vehico-server.herokuapp.com";
         setIsLoading(true);
         fetch(`${apiUrl}/api?mode=${mode}&origin=${origin.lat},${origin.lon}&dest=${dest.lat},${dest.lon}`)
             .then(res => res.json())

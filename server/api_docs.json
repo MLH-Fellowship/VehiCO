@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:5000"
+      "url": "https://vehico-server.herokuapp.com"
     }
   ],
   "paths": {
@@ -64,13 +64,13 @@
         },
         "servers": [
           {
-            "url": "http://localhost:5000"
+            "url": "https://vehico-server.herokuapp.com"
           }
         ]
       },
       "servers": [
         {
-          "url": "http://localhost:5000"
+          "url": "https://vehico-server.herokuapp.com"
         }
       ]
     }
