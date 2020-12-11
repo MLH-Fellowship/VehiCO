@@ -13,8 +13,7 @@ RUN npm install -g serve
 COPY . /srv/app/VehiCO-client
 
 RUN npm run build --production
-CMD serve -l 3000 -s build
 
-EXPOSE 3000 
+CMD ["sh", "-c", "serve -l ${PORT} -s build"]
 
 LABEL org.opencontainers.image.source https://github.com/MLH-Fellowship/VehiCO
