@@ -11,8 +11,8 @@ RUN npm install react-scripts@3.4.1 -g --silent
 
 COPY . /srv/app/VehiCO-client
 
-EXPOSE 3000 
+EXPOSE 3000
 
-CMD ["npm","start"]
+CMD ["npm", "start"]
 
 LABEL org.opencontainers.image.source https://github.com/MLH-Fellowship/VehiCO

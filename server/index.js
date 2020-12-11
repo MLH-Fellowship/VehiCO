@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
 const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./api_docs.json');
@@ -56,7 +57,7 @@ app.get("/api", async (req, res) => {
     res.status(200).json({"statusCode": 200, "cf": cf_val, "distance": distance, "time": time});
 });
 
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 const server = app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 })

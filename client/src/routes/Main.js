@@ -71,8 +71,9 @@ const Main = (props) => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        const apiUrl = "https://vehico-server.herokuapp.com";
         setIsLoading(true);
-        fetch(`http://localhost:5000/api?mode=${mode}&origin=${origin.lat},${origin.lon}&dest=${dest.lat},${dest.lon}`)
+        fetch(`${apiUrl}/api?mode=${mode}&origin=${origin.lat},${origin.lon}&dest=${dest.lat},${dest.lon}`)
             .then(res => res.json())
             .then(data => {
                 if (data.statusCode === 200) {
