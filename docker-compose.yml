@@ -24,7 +24,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - "${PORT}:${PORT}"
+      - "3000:${PORT}"
     volumes:
       - ./client/src:/srv/app/VehiCO-client/src
       - ./client/public:/srv/app/VehiCO-client/public
