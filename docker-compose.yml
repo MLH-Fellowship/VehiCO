@@ -24,12 +24,10 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - "3000:${PORT}"
+      - "3000:3000"
     volumes:
       - ./client/src:/srv/app/VehiCO-client/src
       - ./client/public:/srv/app/VehiCO-client/public
     links:
       - server
-    environment:
-      PORT: ${PORT}
 
